@@ -1,0 +1,18 @@
+<div id="ui">
+  <div class="controls">
+    <div class="button" ng-click="$ctrl.toggleLiveFeed()">{{$ctrl.liveFeed ? 'Use frames' : 'Live feed'}}</div>
+    <div class="button" ng-show="!$ctrl.liveFeed">{{$ctrl.getFramesLenght() > 0 ? ($ctrl.currentFrame + 1) + '/' + $ctrl.getFramesLenght() : 'No frames'}}</div>
+    <input class="slider" type="range" min="0" max="{{$ctrl.getFramesLenght()}}" value="0" ng-model="$ctrl.currentFrame" ng-change="$ctrl.updateView()" ng-show="!$ctrl.liveFeed">
+  </div>
+  <div class="right panel">
+    <ul id="list">
+      <li ng-repeat="keypoint in $ctrl.keypointNames">
+        <label><input type="checkbox" ng-model="$ctrl.enabledKeypoints[$index]" ng-change="$ctrl.updateView()"><span> {{$index}} - {{keypoint}}</span></label>
+      </li>
+    </ul>
+  </div>
+  <div id="viewport"></div>
+</div>
+<div id="tracker_container">
+  <video id="video" width="600" height="500" class=""></video>
+</div>

@@ -1,0 +1,36 @@
+<div id="ui">
+  <div class="controls">
+    <div class="button" open-file="$ctrl.loadFile" valid-types="application/json">Load</div>
+    <div class="button" ng-click="$ctrl.saveFrames()">Save</div>
+    <a id="export" class="hidden" href="" download="motioncapture.json">Download as JSON</a>
+    <div class="button">{{$ctrl.getFramesLenght() > 0 ? ($ctrl.currentFrame + 1) + '/' + $ctrl.getFramesLenght() : 'No frames'}}</div>
+    <input class="slider" type="range" min="0" max="{{$ctrl.getFramesLenght()}}" value="0" ng-model="$ctrl.currentFrame" ng-change="$ctrl.updateView()">
+  </div>
+  <div class="right panel">
+    <ul id="list">
+      <li ng-repeat="keypoint in $ctrl.keypointNames">
+        <label><input type="checkbox" ng-model="$ctrl.enabledKeypoints[$index]" ng-change="$ctrl.updateView()"><span> {{$index}} - {{keypoint}}</span></label>
+      </li>
+    </ul>
+  </div>
+  <div class="center panel" ng-show="$ctrl.showHelp" >
+    <ul id="list">
+      <li>
+        H - show / hide this help dialogue
+      </li>
+      <li>
+        Left, right (Shift) - change current frame (lock to gesture frames)
+      </li>
+      <li>
+        Ctrl + S - save current frame
+      </li>
+      <li>
+        D (Shift) - duplicate frame at current position (delete frame)
+      </li>
+      <li>
+        M (Shift) - add frame to gesture (remove frame)
+      </li>
+    </ul>
+  </div>
+  <div id="viewport"></div>
+</div>

@@ -1,0 +1,14 @@
+<div id="ui">
+  <div class="controls">
+    <div class="button">{{$ctrl.getFramesLenght() > 0 ? ($ctrl.currentFrame + 1) + '/' + $ctrl.getFramesLenght() : 'No frames'}}</div>
+    <input class="slider" type="range" min="0" max="{{$ctrl.getFramesLenght()}}" value="0" ng-model="$ctrl.currentFrame" ng-change="$ctrl.updateView()">
+  </div>
+  <div class="right panel">
+    <ul id="list">
+      <li ng-repeat="keypoint in $ctrl.keypointNames">
+        <label><input type="checkbox" ng-model="$ctrl.enabledKeypoints[$index]" ng-change="$ctrl.updateView()"><span> {{$index}} - {{keypoint}}</span></label>
+      </li>
+    </ul>
+  </div>
+  <div id="viewport"></div>
+</div>

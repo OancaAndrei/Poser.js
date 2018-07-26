@@ -1,0 +1,18 @@
+<div id="ui">
+  <div class="controls">
+    <div class="button" ng-click="$ctrl.toggleRecording()">{{$ctrl.recording ? 'Stop recording' : 'Start recording'}}</div>
+    <div class="button" ng-click="$ctrl.dropFrames()">Drop frames</div>
+    <div class="button">Frames: {{$ctrl.getFramesLenght()}}</div>
+  </div>
+  <div class="right panel">
+    <ul id="list">
+      <li ng-repeat="keypoint in $ctrl.keypointNames">
+        <label><input type="checkbox" ng-model="$ctrl.enabledKeypoints[$index]" ng-change="$ctrl.updateView()"><span> {{$index}} - {{keypoint}}</span></label>
+      </li>
+    </ul>
+  </div>
+  <div id="viewport"></div>
+</div>
+<div id="tracker_container">
+  <video id="video" width="600" height="500" class=""></video>
+</div>
