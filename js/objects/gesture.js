@@ -1,6 +1,6 @@
 function Gesture(weights) {
   this.frames = [];
-  if (Array.isArray(frames)) this.weights = weights;
+  if (Array.isArray(weights)) this.weights = weights;
   else {
     var size = 17;
     this.weights = [];
