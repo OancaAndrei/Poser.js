@@ -116,5 +116,6 @@ function Pose() {
       vec2.set(this.keypoints[i], array[0][i][0], array[0][i][1]);
       this.scores[i] = array[1][i];
     }
+    return this;
   }
 }

@@ -33,4 +33,24 @@ function Gesture(weights) {
   this.setWeights = function(weights) {
     this.weights = weights;
   }
+  this.export = function() {
+    var data = {};
+    data.weights = this.weights;
+    data.frames = [];
+    for (var i = 0; i < this.frames.length; i++) {
+      data.frames.push(this.frames[i].export());
+    }
+    return data;
+  }
+  this.import = function(data) {
+    if (data.weights) {
+      this.weights = data.weights;
+    }
+    if (data.frames) {
+      for (var i = 0; i < data.frames.length; i++) {
+        this.frames.push(new Pose().import(data.frames[i]));
+      }
+    }
+    return this;
+  }
 }

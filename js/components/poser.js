@@ -23,6 +23,20 @@ function PoserController($scope, framesHolder) {
     this.gesture.addFrame(frame);
   }
 
+  this.saveGesture = function() {
+    var data = this.gesture.export();
+    // To json
+    var json = JSON.stringify(data);
+    // Encode
+    var filename = "Gesture - " + new Date() + ".json";
+    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+    // Download
+    var link = document.getElementById('export');
+    link.href = dataUri;
+    link.download = filename;
+    link.click();
+  }
+
   this.toggleLiveFeed = function() {
     ctrl.liveFeed = !ctrl.liveFeed;
   }

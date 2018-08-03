@@ -1,8 +1,10 @@
 <div id="ui">
   <div class="controls">
+    <div class="button" ng-click="$ctrl.saveGesture()">Save gesture</div>
     <div class="button" ng-click="$ctrl.toggleLiveFeed()">{{$ctrl.liveFeed ? 'Use frames' : 'Live feed'}}</div>
     <div class="button" ng-show="!$ctrl.liveFeed">{{$ctrl.getFramesLenght() > 0 ? ($ctrl.currentFrame + 1) + '/' + $ctrl.getFramesLenght() : 'No frames'}}</div>
     <input class="slider" type="range" min="0" max="{{$ctrl.getFramesLenght()}}" value="0" ng-model="$ctrl.currentFrame" ng-change="$ctrl.updateView()" ng-show="!$ctrl.liveFeed">
+    <a id="export" class="hidden" href="" download="gesture.json">Download as JSON</a>
   </div>
   <div class="right panel">
     <ul id="list">
